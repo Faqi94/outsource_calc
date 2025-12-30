@@ -132,6 +132,69 @@ LANG = {
         "chart_cost": "Total Cost",
         "chart_profit": "Gross Profit",
         "not_active": "Inactive"
+    },
+    "CN": {
+        "page_title": "外包项目预测计算器",
+        "sb_title": "预测参数",
+        "sb_basic": "1. 基础数据",
+        "lbl_manpower": "人力数量 (人)",
+        "sb_loc": "2. 地点与薪资",
+        "lbl_method": "输入方式:",
+        "opt_db": "选择数据库",
+        "opt_manual": "手动输入",
+        "lbl_prov": "选择省份:",
+        "lbl_detail_wage": "薪资明细:",
+        "opt_use_ump": "使用省级最低工资 (UMP)",
+        "opt_use_city": "选择市/县",
+        "lbl_city": "选择城市:",
+        "lbl_input_nominal": "输入金额 (印尼盾)",
+        "sb_bpjs": "3. 社保配置 (BPJS)",
+        "lbl_bpjs_tk": "就业保障 (BPJS Ketenagakerjaan)",
+        "exp_bpjs_tk": "就业保障费率详情",
+        "lbl_jkk": "工伤保险费率 (JKK %)",
+        "lbl_jht": "包含养老保险 (JHT 3.7%)",
+        "lbl_jp": "包含退休金 (JP 2%)",
+        "lbl_bpjs_kes": "医疗保险 (BPJS Kesehatan 4%)",
+        "sb_benefit": "4. 福利储备",
+        "lbl_thr": "节日津贴储备 (THR - 1个月工资)",
+        "lbl_komp": "合同补偿金储备 (PKWT - 1个月工资)",
+        "sb_comm": "5. 商业条款",
+        "lbl_fee": "管理费 (Management Fee %)",
+        "lbl_ppn": "增值税 (PPN %)",
+        "warn_data": "数据不完整：请输入人力数量并在侧边栏选择省份/城市。",
+        "status": "状态",
+        "area": "地区",
+        "card_inv": "总账单金额 (Invoice)",
+        "card_hpp": "总成本 (HPP)",
+        "card_profit": "毛利润 (Fee)",
+        "card_margin": "利润率 (Margin)",
+        "sub_month": "每月",
+        "sub_cost": "直接支出",
+        "sub_net": "净收入",
+        "tab_table": "详情与图表",
+        "tab_chart": "图表分析",
+        "h_unit": "1. 单人成本计算详情 (Unit Cost)",
+        "h_total": "2. 总预估账单 (所有人力)",
+        "info_total": "以上详情乘以",
+        "people": "人",
+        # Table Items
+        "item_salary": "基本工资 (UMK/UMP)",
+        "item_tk": "就业保障 (BPJS TK)",
+        "item_kes": "医疗保险 (BPJS Kesehatan 4%)",
+        "item_thr": "节日津贴储备 (THR)",
+        "item_komp": "合同补偿金储备 (PKWT)",
+        "item_subtotal": "小计成本 (HPP)",
+        "item_fee": "管理费 (Management Fee)",
+        "item_ppn": "增值税 (PPN)",
+        "item_total": "总账单 (单人)",
+        "col_component": "费用组成",
+        "col_nominal": "金额 (印尼盾)",
+        "col_total_nominal": "总金额",
+        "chart_title_pie": "单价构成",
+        "chart_title_bar": "项目盈利能力",
+        "chart_cost": "总成本",
+        "chart_profit": "毛利润",
+        "not_active": "未激活"
     }
 }
 
@@ -207,9 +270,16 @@ st.markdown("""
 
 # --- SIDEBAR & LANGUAGE SELECTION ---
 with st.sidebar:
-    # 1. Pilih Bahasa
-    lang_code = st.selectbox("🌐 Language / Bahasa", ["Indonesia", "English"])
-    L_CODE = "ID" if lang_code == "Indonesia" else "EN"
+    # 1. Pilih Bahasa (UPDATE 3 BAHASA)
+    lang_code = st.selectbox("🌐 Language / Bahasa / 语言", ["Indonesia", "English", "Mandarin (Simplified)"])
+    
+    if lang_code == "Indonesia":
+        L_CODE = "ID"
+    elif lang_code == "English":
+        L_CODE = "EN"
+    else:
+        L_CODE = "CN"
+        
     txt = LANG[L_CODE] # Shortcut untuk akses teks
 
     try:
